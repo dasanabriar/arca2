@@ -2,11 +2,14 @@ package com.arca.app.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +29,9 @@ public class User implements Serializable {
 	private String userName;
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
+    private List<Photo> photos;
 
 	public Long getIdUsers() {
 		return idUsers;
@@ -82,6 +88,15 @@ public class User implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
+
 
 	/**
 	 * Auto generated
