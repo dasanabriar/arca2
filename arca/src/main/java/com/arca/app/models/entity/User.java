@@ -6,10 +6,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +23,6 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long idUsers;
 	private String firstName;
 	private String lastName;
@@ -32,7 +34,19 @@ public class User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
     private List<Photo> photos;
-
+	
+	/**
+	 * can be a user client(0) or an user normal(1).
+	 */
+	private int userType;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idCity")
+	private City city;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
+    private List<Favorite> favorites;
+	
 	public Long getIdUsers() {
 		return idUsers;
 	}
@@ -95,6 +109,30 @@ public class User implements Serializable {
 
 	public void setPhotos(List<Photo> photos) {
 		this.photos = photos;
+	}
+
+	public int getUserType() {
+		return userType;
+	}
+
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+
+	public List<Favorite> getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(List<Favorite> favorites) {
+		this.favorites = favorites;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 
