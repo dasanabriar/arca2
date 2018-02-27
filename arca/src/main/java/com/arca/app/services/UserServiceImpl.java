@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.arca.app.models.dao.IUserDao;
 import com.arca.app.models.entity.City;
+import com.arca.app.models.entity.SexType;
 import com.arca.app.models.entity.User;
 
 @Service
@@ -21,8 +22,8 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Override
-	public List<User> findByCityAndUserType(City city, int userType) {
-		return (List<User>) userDao.findByCityAndUserType(city, userType);
+	public List<User> findByCityAndUserTypeAndSexTypeIn(City city, int userType, List<SexType> sexTypes) {
+		return (List<User>) userDao.findByCityAndUserTypeAndSexTypeIn(city, userType, sexTypes);
 	}
 	
 }
