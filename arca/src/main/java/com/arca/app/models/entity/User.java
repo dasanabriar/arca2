@@ -47,6 +47,13 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
     private List<Favorite> favorites;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idSexType")
+	private SexType sexType;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
+	private List<Preference> preferences; 
+	
 	public Long getIdUsers() {
 		return idUsers;
 	}
@@ -134,6 +141,25 @@ public class User implements Serializable {
 	public void setCity(City city) {
 		this.city = city;
 	}
+
+	public SexType getSexType() {
+		return sexType;
+	}
+
+	public void setSexType(SexType sexType) {
+		this.sexType = sexType;
+	}
+
+	public List<Preference> getPreferences() {
+		return preferences;
+	}
+
+	public void setPreferences(List<Preference> preferences) {
+		this.preferences = preferences;
+	}
+
+
+
 
 
 	/**
