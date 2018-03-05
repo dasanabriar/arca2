@@ -19,10 +19,15 @@ public class Favorite  implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFavorite;
+	//@GeneratedValue(generator = "seqPre")
+	//@SequenceGenerator(name = "seqPre", sequenceName = "SC_PRESENTACION_SEQ", allocationSize = 1)
+	
 	
 	private long idUsers;
 	
 	private long idUserFavorite;
+	
+	private String status;
 
 	public long getIdUsers() {
 		return idUsers;
@@ -39,7 +44,21 @@ public class Favorite  implements Serializable {
 	public void setIdUserFavorite(long idUserFavorite) {
 		this.idUserFavorite = idUserFavorite;
 	}
-	
-	
-	
+
+	public Long getIdFavorite() {
+		return idFavorite;
+	}
+
+	public void setIdFavorite(Long idFavorite) {
+		this.idFavorite = idFavorite;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 }
