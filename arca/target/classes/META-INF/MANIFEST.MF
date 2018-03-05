@@ -3,7 +3,7 @@ Implementation-Title: arca
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: admin
 Implementation-Vendor-Id: com.arca.app
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_152
 Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-
  starter-parent/arca/
 Created-By: Maven Integration for Eclipse
