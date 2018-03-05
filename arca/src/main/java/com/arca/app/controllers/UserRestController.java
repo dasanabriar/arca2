@@ -10,12 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.arca.app.models.entity.City;
-import com.arca.app.models.entity.Preference;
+import com.arca.app.models.entity.Favorite;
 import com.arca.app.models.entity.SexType;
 import com.arca.app.models.entity.User;
 import com.arca.app.services.IUserService;
@@ -35,7 +36,6 @@ public class UserRestController {
 
 	
 	@GetMapping("/getUserByCityAndTypeAndPreferences/{cityId}/{userType}/{preferencesId}")
-	@ResponseBody
 	public ResponseEntity<List<User>> getUserByCityAndTypeAndPreferences(@PathVariable Long cityId, @PathVariable int userType, @PathVariable Long[] preferencesId) {
 		// @RequestBody for method put  and get a entity.
 		City city = new City();
@@ -63,4 +63,6 @@ public class UserRestController {
 		sexTypes.add(sexType);
 		return new ResponseEntity<List<User>>(userService.findByCityAndUserTypeAndSexTypeIn(city, 1, sexTypes), HttpStatus.OK);
 	}
+	
+	
 }
