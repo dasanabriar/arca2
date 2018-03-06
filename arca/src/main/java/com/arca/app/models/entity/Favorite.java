@@ -19,9 +19,6 @@ public class Favorite  implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFavorite;
-	//@GeneratedValue(generator = "seqPre")
-	//@SequenceGenerator(name = "seqPre", sequenceName = "SC_PRESENTACION_SEQ", allocationSize = 1)
-	
 	
 	private long idUsers;
 	

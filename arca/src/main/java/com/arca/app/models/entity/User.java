@@ -31,6 +31,9 @@ public class User implements Serializable {
 	private String userName;
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
+	@Temporal(TemporalType.DATE)
+	private Date dateBirth;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
     private List<Photo> photos;
@@ -52,8 +55,11 @@ public class User implements Serializable {
 	private SexType sexType;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
-	private List<Preference> preferences; 
+	private List<Preference> preferences;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
+	private List<ClientServiceType> clientServicesType;
+
 	public Long getIdUsers() {
 		return idUsers;
 	}
@@ -158,8 +164,21 @@ public class User implements Serializable {
 		this.preferences = preferences;
 	}
 
+	public Date getDateBirth() {
+		return dateBirth;
+	}
 
+	public void setDateBirth(Date dateBirth) {
+		this.dateBirth = dateBirth;
+	}
 
+	public List<ClientServiceType> getClientServicesType() {
+		return clientServicesType;
+	}
+
+	public void setClientServicesType(List<ClientServiceType> clientServicesType) {
+		this.clientServicesType = clientServicesType;
+	}
 
 
 	/**
