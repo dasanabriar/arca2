@@ -1,6 +1,9 @@
 package com.arca.app.models.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +19,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+
 
 @Entity
 @Table(name = "users")
@@ -31,7 +40,6 @@ public class User implements Serializable {
 	private String userName;
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
-	@Temporal(TemporalType.DATE)
 	private Date dateBirth;
 	
 	
@@ -59,6 +67,11 @@ public class User implements Serializable {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
 	private List<ClientServiceType> clientServicesType;
+
+	@Transient
+	@JsonSerialize
+	@JsonDeserialize
+	private int age;
 
 	public Long getIdUsers() {
 		return idUsers;
@@ -179,6 +192,22 @@ public class User implements Serializable {
 	public void setClientServicesType(List<ClientServiceType> clientServicesType) {
 		this.clientServicesType = clientServicesType;
 	}
+
+	public int getAge() {
+		if(this.dateBirth != null) {
+			LocalDate localDateMayor = new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate localDateMinor = this.dateBirth.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			Period period = Period.between(localDateMinor, localDateMayor);
+			age = period.getYears();
+		}
+		
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 
 
 	/**

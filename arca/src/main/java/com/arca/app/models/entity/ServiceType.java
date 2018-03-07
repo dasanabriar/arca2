@@ -24,8 +24,6 @@ public class ServiceType  implements Serializable {
 	private String nameService;
 	
 	private int codeService;
-	
-	private int priceService;
 
 	public Long getIdServiceType() {
 		return idServiceType;
@@ -51,12 +49,4 @@ public class ServiceType  implements Serializable {
 		this.codeService = codeService;
 	}
 
-	public int getPriceService() {
-		return priceService;
-	}
-
-	public void setPriceService(int priceService) {
-		this.priceService = priceService;
-	}
-	
 }

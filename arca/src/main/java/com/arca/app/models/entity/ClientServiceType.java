@@ -3,9 +3,12 @@ package com.arca.app.models.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,10 +23,14 @@ public class ClientServiceType implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idClientServiceType;
-
-	private Long idServiceType;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idServiceType")
+	private ServiceType serviceType;
 
 	private Long idUsers;
+	
+	private int priceService;
 
 	public Long getIdClientServiceType() {
 		return idClientServiceType;
@@ -31,14 +38,6 @@ public class ClientServiceType implements Serializable {
 
 	public void setIdClientServiceType(Long idClientServiceType) {
 		this.idClientServiceType = idClientServiceType;
-	}
-
-	public Long getIdServiceType() {
-		return idServiceType;
-	}
-
-	public void setIdServiceType(Long idServiceType) {
-		this.idServiceType = idServiceType;
 	}
 
 	public Long getIdUsers() {
@@ -49,5 +48,20 @@ public class ClientServiceType implements Serializable {
 		this.idUsers = idUsers;
 	}
 
-	
+	public int getPriceService() {
+		return priceService;
+	}
+
+	public void setPriceService(int priceService) {
+		this.priceService = priceService;
+	}
+
+	public ServiceType getServiceType() {
+		return serviceType;
+	}
+
+	public void setServiceType(ServiceType serviceType) {
+		this.serviceType = serviceType;
+	}
+
 }
