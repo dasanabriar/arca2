@@ -20,17 +20,17 @@ public class Favorite  implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFavorite;
 	
-	private long idUsers;
+	private Long idUsers;
 	
-	private long idUserFavorite;
+	private Long idUserFavorite;
 	
 	private String status;
 
-	public long getIdUsers() {
+	public Long getIdUsers() {
 		return idUsers;
 	}
 
-	public void setIdUsers(long idUsers) {
+	public void setIdUsers(Long idUsers) {
 		this.idUsers = idUsers;
 	}
 
@@ -38,7 +38,7 @@ public class Favorite  implements Serializable {
 		return idUserFavorite;
 	}
 
-	public void setIdUserFavorite(long idUserFavorite) {
+	public void setIdUserFavorite(Long idUserFavorite) {
 		this.idUserFavorite = idUserFavorite;
 	}
 
