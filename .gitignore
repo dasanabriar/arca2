@@ -6,3 +6,5 @@ arca/target/classes/META-INF/maven/com.arca.app/arca/pom.properties
 *.class
 *.class
 *.properties
+arca/src/main/resources/application.properties
+arca/src/main/resources/application.properties
