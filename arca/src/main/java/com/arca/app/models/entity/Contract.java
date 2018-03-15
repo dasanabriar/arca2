@@ -42,6 +42,11 @@ public class Contract implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idServiceType")
 	private ServiceType serviceType;
+	
+	/**
+	 * Confirmed, Completed, Peticion, Rechazado
+	 */
+	private String status;
 
 	public Long getIdContract() {
 		return idContract;
@@ -113,6 +118,14 @@ public class Contract implements Serializable {
 
 	public void setServiceType(ServiceType serviceType) {
 		this.serviceType = serviceType;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

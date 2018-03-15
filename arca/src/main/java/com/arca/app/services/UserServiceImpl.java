@@ -26,4 +26,8 @@ public class UserServiceImpl implements IUserService {
 		return (List<User>) userDao.findByCityAndUserTypeAndSexTypeIn(city, userType, sexTypes);
 	}
 	
+	@Override
+	public List<User> findByIdUsersIn(Long[] idFavorites) {
+		return (List<User>) userDao.findByIdUsersIn(idFavorites);
+	}
 }

@@ -49,6 +49,14 @@ public class UserRestController {
 	}
 
 	
+	@GetMapping("/getFavorites/{idFavorites}")
+	public ResponseEntity<List<User>> getFavorites(@PathVariable Long[] idFavorites) {
+		
+		return new ResponseEntity<List<User>>(userService.findByIdUsersIn(idFavorites), HttpStatus.OK);
+	}
+	
+	
+	
 	@GetMapping("/getUserDummy")
 	public ResponseEntity<List<User>> getUserDummy() {
 		City city = new City();

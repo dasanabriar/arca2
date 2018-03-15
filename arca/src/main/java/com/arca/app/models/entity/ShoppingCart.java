@@ -26,12 +26,12 @@ public class ShoppingCart  implements Serializable {
 
 	private Long idUsers;
 	
-	// Completed, Incomplete (active - inactive)
+	// (active - inactive)
 	private String status;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idShoppingCart")
-	private List<Contract> contracts;
 
+	@OneToMany(mappedBy = "idShoppingCart")
+	private List<Contract> contracts;
+	
 	public Long getIdShoppingCart() {
 		return idShoppingCart;
 	}

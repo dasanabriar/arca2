@@ -68,6 +68,7 @@ public class User implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
 	private List<ClientServiceType> clientServicesType;
 
+	
 	@Transient
 	@JsonSerialize
 	@JsonDeserialize
@@ -207,7 +208,6 @@ public class User implements Serializable {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
 
 
 	/**

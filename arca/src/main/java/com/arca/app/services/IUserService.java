@@ -10,6 +10,7 @@ public interface IUserService {
 
 	List<User> findAll();
 	
-	List<User> findByCityAndUserTypeAndSexTypeIn(City city, int userType,
-			List<SexType> sexTypes);
+	List<User> findByCityAndUserTypeAndSexTypeIn(City city, int userType, List<SexType> sexTypes);
+	
+	List<User> findByIdUsersIn(Long[] idFavorites);
 }

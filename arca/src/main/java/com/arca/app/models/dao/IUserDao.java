@@ -10,6 +10,7 @@ import com.arca.app.models.entity.User;
 
 public interface IUserDao extends CrudRepository<User, Long>{
 	
-	List<User> findByCityAndUserTypeAndSexTypeIn
-			(City city, int userType, List<SexType> sexTypes);
+	List<User> findByCityAndUserTypeAndSexTypeIn (City city, int userType, List<SexType> sexTypes);
+	
+	List<User> findByIdUsersIn(Long[] idFavorites);
 }
